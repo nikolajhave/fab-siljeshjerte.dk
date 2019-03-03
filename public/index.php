@@ -7,4 +7,5 @@ ini_set("date.timezone", "Europe/Copenhagen");
 setlocale(LC_ALL, 'da_DK.UTF-8');
 
 require_once '../vendor/autoload.php';
+require_once '../app/old_classes.php';
 require_once '../app/routes.php';

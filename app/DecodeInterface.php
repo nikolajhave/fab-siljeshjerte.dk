@@ -25,7 +25,9 @@ class DecodeInterface extends \App\DB
     public function getPreview($vars) {
         $db = $this->getObject($vars['id']);
 
-        dd($db);
+        $obj = $db->data;
+
+        return $obj->getPreview();
     }
 
     private function getLinks() {
