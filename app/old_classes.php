@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * Must exists to unserialize
+ *
+ * Preview function added
+ */
 
 class Data {
-    function name() {
-        return 'navn';
+    function getHeader() {
+        return $this->navn;
     }
 
     function getPreview() {
-        $html = "<h3>". $this->{$this->name()} ."</h3>";
+        $html = "<h3>". $this->getHeader() ."</h3>";
 
+        // Vars
         foreach (get_object_vars($this) as $var => $value) {
             if (strstr($var, 'object_')) {
                 continue;
@@ -16,7 +22,8 @@ class Data {
             $html.= "<p>". $value ."</p>";
         }
 
-        $html .= '<code>'. nl2br(var_dump($this, true)) .'</code>';
+        // Vardump
+        $html .= '<code>'. nl2br(print_r($this, true)) .'</code>';
 
         return $html;
     }
@@ -33,6 +40,7 @@ class Image
 
 class LocalImage extends Image {}
 
+class Web extends Data {}
 class CandlePage extends Data {}
 class Comment extends Data {}
 class ContactPage extends Data {}
@@ -43,3 +51,12 @@ class PageFolder extends Data {}
 class Bruger extends Data {}
 class BrugerFolder extends Data {}
 class LocalImageArchive extends Data {}
+
+
+// Soelvske
+class Billede extends Image {}
+class Billedkategori extends Data {}
+class Mester extends Data {}
+class Produkt extends Data {}
+class By extends Data {}
+class Art extends Data {}

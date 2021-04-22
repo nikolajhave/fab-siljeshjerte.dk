@@ -12,8 +12,21 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     // Preview all?
     $r->addRoute('GET', '/preview', ['DecodeInterface', 'getPreview']);
 
+    // Save to table
+    $r->addRoute('GET', '/parse', ['DecodeInterface', 'getPreviewAll']);
+
     // Preview object with ID ..
     $r->addRoute('GET', '/preview/{id:\d+}', ['DecodeInterface', 'getPreview']);
+
+    // Index in tables
+    $r->addRoute('GET', '/index', ['ObjectIndexer', 'index']);
+
+    // JSON object data
+    $r->addRoute('GET', '/data/object', ['DecodeInterface', 'getObjects']);
+
+    // JSON all data
+    $r->addRoute('GET', '/data/{type}', ['DecodeInterface', 'getData']);
+
 });
 
 

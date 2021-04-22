@@ -26,6 +26,20 @@ class DB
         return false;
     }
 
+    /*
+     * Returns a list of all the object ids
+     */
+    public function getObjectList() {
+        $query = $this->DB->query('select id, name, type from object order by type, name');
+        $links = [];
+
+        while ($result = $query->fetch_assoc()) {
+            $links[] = $result;
+        }
+
+        return $links;
+    }
+
     private function decode($data) {
         $data = utf8_decode($data);
 
@@ -35,4 +49,13 @@ class DB
 
         return $data;
     }
+
+    /**
+     * Returns an instance of the class
+     */
+    public function instance()
+    {
+        return new DB();
+    }
+    
 }
